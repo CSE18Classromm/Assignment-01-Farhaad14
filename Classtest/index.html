@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Responsive Grid Layout</title>
+  <style>
+    body{
+      background: #fff;
+      color: #222;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:28px 12px;
+    }
+
+    
+    .mainbody{
+      width:100%;
+      max-width:920px;
+      background:rgb(203, 203, 203);
+      padding:28px;
+      border-radius:8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .logo{
+      background:blanchedalmond;
+      border: 1px solid rgba(0,0,0,0.06);
+      padding:18px;
+      text-align:center;
+      margin-bottom:16px;
+      border-radius:4px;
+      min-height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .header{
+      
+      background:blanchedalmond;
+      border: 1px solid rgba(0,0,0,0.06);
+      padding:18px;
+      text-align:center;
+      margin-bottom:16px;
+      border-radius:4px;
+      min-height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .text-area{
+      min-height:80px;
+      background:blanchedalmond;
+      border: 1px solid rgba(0,0,0,0.06);
+      padding:18px;
+      text-align:center;
+      margin-bottom:16px;
+      border-radius:4px;
+      min-height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+     
+    }
+    .boxes{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-bottom:16px;
+      align-items:stretch;
+    }
+
+    .box{
+      background:yellow;
+      border: 1px solid rgba(0,0,0,0.06);
+      min-height:160px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:4px;
+      
+    }
+
+    
+    .footer{
+      background:yellowgreen;
+      padding:14px;
+      text-align:center;
+      border-radius:4px;
+      
+     
+    }    
+    @media (max-width:720px){
+      .boxes{ grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="mainbody">
+    <div class="logo">Logo</div>
+
+    <div class="header">Header</div>
+
+    <div class="text-area">
+      <div style="max-width:780px; text-align:center;">
+        Text Area.
+      </div>
+    </div>
+
+    <section class="boxes">
+      <div class="box">Box1</div>
+      <div class="box">Box2</div>
+      <div class="box">Box3</div>
+    </section>
+
+    <div class="footer">Footer</div>
+  </main>
+</body>
+</html>
