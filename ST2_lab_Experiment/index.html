@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Responsive Grid layout</title>
+</head>
+<style>
+body{
+margin: 0px;
+padding: 20px;
+background:#F5F5F5;
+}
+h2{
+text-align: center;
+font-family: 'Brush Script MT', cursive;
+font-size: 44px;
+color:grey;
+margin-bottom:30px;
+}
+
+.grid {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 20px; 
+}
+
+.card{
+width: 100%;
+height: 150px;
+object-fit: cover;
+border:2px solid black;
+border-radius: 6px;
+margin-bottom: 10px;
+text-align: center;
+color: red;
+background:#88E788;
+}
+
+.card h3{
+font-size:30px;
+margin: 14px 0px;
+
+}
+
+.card p {
+ font-size: 22px;
+ color: #555;
+ margin: 4px 0;
+ }
+ .Num {
+ font-weight: bold;
+ color: #007bff;
+ }
+
+ @media (max-width: 1024px) {
+ .grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+ }
+ @media (max-width: 600px) {
+ .grid {
+ grid-template-columns: 1fr; }
+ }
+
+
+
+</style>
+<body>
+<h2>Responsive Product Grid</h2>
+
+<div class="grid">
+ <div class="card">
+ <h3>CARD 1</h3>
+ <p>This is card number - 1</p>
+ <p class="Num">ONE</p>
+ </div>
+ <div class="card">
+
+ <h3>CARD 2</h3>
+ <p>This is card number - 2</p>
+ <p class="Num">TWO</p>
+ </div>
+ <div class="card">
+ <h3>CARD 3</h3>
+ <p>This is card number - 3</p>
+ <p class="Num">THREE</p>
+ </div>
+ <div class="card">
+
+ <h3>CARD 4</h3>
+ <p>This is card number - 4</p>
+ <p class="Num">FOUR</p>
+ </div>
+ </div>
+
+</body>
+</html>
