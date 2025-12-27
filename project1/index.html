@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F1 Homepage Clone</title>
+
+    <style>
+      /*Font*/
+      @font-face {
+        font-family: Formula1;
+        src: url("https://www.formula1.com/s/fonts/formula1/Formula1-Regular.woff2")
+          format("woff2");
+
+        font-display: swap;
+      }
+
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        font-family: Formula1, sans-serif;
+      }
+
+      body {
+        background: #111;
+        color: #fff;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      /*Top Bar */
+      .top-bar {
+        background: #e10600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 50px;
+        font-size: 14px;
+      }
+
+      .top-bar img {
+        height: 30px;
+      }
+
+      .top-links a {
+        margin-left: 20px;
+      }
+
+      /*HEADER*/
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: #000;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 25px;
+      }
+
+      nav a:hover {
+        color: #e10600;
+      }
+
+     
+      #menu-toggle {
+        display: none;
+      }
+
+      .menu-icon {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .menu-icon span {
+        width: 25px;
+        height: 3px;
+        background: #fff;
+        margin: 4px 0;
+      }
+
+      /*HERO*/
+      .hero {
+        position: relative;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+      }
+
+      .hero-content {
+        position: absolute;
+        bottom: 7%;
+        background: rgba(0, 0, 0, 0.55);
+        padding: 15px 30px;
+        border-radius: 8px;
+        z-index: 2;
+      }
+
+      .hero-content h1 {
+        font-size: 30px;
+        text-align: center;
+        overflow: hidden;
+        border-right: 0.15em solid #e10600;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: 0.15em;
+        animation: typing 3.5s steps(40, end),
+          blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+
+        50% {
+          border-color: #e10600;
+        }
+      }
+
+      .f1-news {
+        background: #15151e;
+        padding: 80px 5%;
+      }
+
+      .f1-title,
+      .drivers-section h2 {
+        font-size: 2.4rem;
+        margin-bottom: 40px;
+        border-left: 6px solid #e10600;
+        padding-left: 16px;
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .news-card {
+        position: relative;
+        height: 340px;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .news-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .news-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85),
+          rgba(0, 0, 0, 0.3),
+          transparent
+        );
+      }
+
+      .news-content {
+        position: absolute;
+        bottom: 14px;
+        inset-inline: 14px;
+      }
+
+      .news-tag {
+        background: #e10600;
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        display: inline-block;
+        margin-bottom: 6px;
+        font-weight: bold;
+      }
+
+      /*DRIVERS Section*/
+      .drivers-section {
+        padding: 50px;
+        background-color: #000;
+      }
+
+      .drivers-container {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        scroll-behavior: smooth;
+        cursor: grab;
+      }
+
+      .drivers-container::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .drivers-container::-webkit-scrollbar-thumb {
+        background: #e10600;
+        border-radius: 10px;
+      }
+
+      .driver-card {
+        width: 250px;
+        height: 300px;
+        background-image: url(/HTML-CSE18/project1/images/BGD.jpg);
+        border-radius: 10px;
+        text-align: center;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .driver-card img {
+        width: 100%;
+        transition: transform 0.3s;
+      }
+
+      .driver-card:hover img {
+        transform: scale(1.04);
+      }
+
+      .driver-card h4 {
+        margin: 10px 0;
+      }
+
+    
+      .partners {
+        background: #0f0f14;
+        padding: 60px 0 0;
+        color: #fff;
+      }
+
+      .partners h2 {
+        font-family: "Formula1", Arial, sans-serif;
+
+        font-size: 2.4rem;
+        margin-bottom: 40px;
+        border-left: 6px solid #e10600;
+        padding-left: 18px;
+        margin-left: 3%;
+      }
+
+      .partner-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 48px;
+        padding: 38px 6%;
+      }
+
+      .partner-row span {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        opacity: 0.85;
+        white-space: nowrap;
+        transition: ease-in;
+      }
+
+      .partner-row span:hover {
+        opacity: 1;
+      }
+
+      /* Background bands */
+      .partner-row.dark {
+        background: #15151e;
+      }
+
+      .partner-row.mid {
+        background: #2a2a32;
+      }
+
+      .partner-row.light {
+        background: #3a3a42;
+      }
+
+      /*FOOTER*/
+      footer {
+        background: #000;
+        padding: 20px;
+        text-align: center;
+        color: #777;
+      }
+
+      /*SINGLE BREAKPOINT */
+      @media (max-width: 768px) {
+        .menu-icon {
+          display: flex;
+        }
+
+        nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: #000;
+        }
+
+        nav ul {
+          display: none;
+          flex-direction: column;
+          padding: 15px 0;
+        }
+
+        #menu-toggle:checked ~ nav ul {
+          display: flex;
+        }
+
+        .hero-content h1 {
+          font-size: 22px;
+        }
+
+        .news-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .news-card {
+          height: 260px;
+        }
+
+        .partners-section h2 {
+          font-size: 22px;
+        }
+
+        .partners-row {
+          font-size: small;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="top-bar">
+      <img src="images/logob2.png" alt="Logo" />
+      <div class="top-links">
+        <a href="#">Tickets</a>
+        <a href="#">Sign In</a>
+      </div>
+    </div>
+
+    <header>
+      <div class="logo">Formula1</div>
+
+      <input type="checkbox" id="menu-toggle" />
+
+      <label for="menu-toggle" class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav>
+        <ul>
+          <li><a href="#Home">Home</a></li>
+          <li><a href="#News">News</a></li>
+          <li><a href="#">Schedule</a></li>
+          <li><a href="#Driver">Drivers</a></li>
+          <li><a href="#Partners">Teams</a></li>
+          <li><a href="#">Standings</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" id="Home">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="images/f1 hero1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="hero-content">
+        <h1>F1 Clone by Farhaad</h1>
+      </div>
+    </section>
+
+    <section class="f1-news">
+      <h2 class="f1-title">F1 LATEST NEWS</h2>
+
+      <div class="news-grid">
+        <div class="news-card">
+          <img src="images/MV2.jpg" alt="" />
+          <div class="news-content">
+            <span class="news-tag">RACE</span>
+            <h3>Verstappen dominates thrilling race weekend</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/feraf1.avif" alt="" />
+          <div class="news-content">
+            <span class="news-tag">TEAM</span>
+            <h3>Ferrari reveal bold upgrades for next GP</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/lh4.avif" alt="" />
+          <div class="news-content">
+            <span class="news-tag">DRIVERS</span>
+            <h3>Hamilton speaks on future beyond Mercedes</h3>
+          </div>
+        </div>
+
+        <div class="news-card" id="News">
+          <img src="images/rb1.jpg" alt="" />
+          <div class="news-content">
+            <span class="news-tag">TECH</span>
+            <h3>Red Bull’s floor design explained</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/mcl.avif" alt="" />
+          <div class="news-content">
+            <span class="news-tag">QUALIFYING</span>
+            <h3>McLaren shocks grid with front-row lockout</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/tyre.jpg" alt="" />
+          <div class="news-content">
+            <span class="news-tag">INSIGHT</span>
+            <h3>Why tyre strategy decided the race</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/pit.avif" alt="" />
+          <div class="news-content">
+            <span class="news-tag">PIT LANE</span>
+            <h3>Fastest pit stops of the season so far</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/f1ckt.png" alt="" />
+          <div class="news-content">
+            <span class="news-tag">FUTURE</span>
+            <h3>New circuits added to 2026 calendar</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/mcs.avif" alt="" />
+          <div class="news-content">
+            <span class="news-tag">LEGENDS</span>
+            <h3>Schumacher’s record still stands strong</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/f1fit.avif" alt="" />
+          <div class="news-content">
+            <span class="news-tag">ANALYSIS</span>
+            <h3>Why midfield battles are tighter than ever</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/sainz.png" alt="" />
+          <div class="news-content">
+            <span class="news-tag">BREAKING</span>
+            <h3>Driver swap rumours intensify</h3>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/tpf1.avif" alt="" />
+          <div class="news-content">
+            <span class="news-tag">STATS</span>
+            <h3>Top speeds recorded this season</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drivers -->
+    <section class="drivers-section" id="Driver">
+      <h2>F1 Drivers</h2>
+      <div class="drivers-container">
+        <div class="driver-card">
+          <img src="images/MV.avif" />
+          <h4>Driver 1</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/OP.avif" />
+          <h4>Driver 2</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/CL.avif" />
+          <h4>Driver 3</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/LH.avif" />
+          <h4>Driver 10</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/FA.avif" />
+          <h4>Driver 4</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/YS.avif" />
+          <h4>Driver 5</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/GR.avif" />
+          <h4>Driver 6</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/KA.avif" />
+          <h4>Driver 7</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/AA.avif" />
+          <h4>Driver 8</h4>
+        </div>
+        <div class="driver-card">
+          <img src="images/CS.avif" />
+          <h4>Driver 9</h4>
+        </div>
+      </div>
+    </section>
+    <section class="partners" id="Partners">
+      <h2>OUR PARTNERS</h2>
+      <div class="partner-row dark">
+        <span>LVMH</span> <span>PIRELLI</span> <span>ARAMCO</span>
+        <span>HEINEKEN</span> <span>AWS</span> <span>LENOVO</span>
+        <span>DHL</span> <span>QATAR AIRWAYS</span> <span>MSC</span>
+        <span>CRYPTO.COM</span> <span>SALESFORCE</span>
+        <span>Eklavya Bin Laden</span>
+      </div>
+      <div class="partner-row mid">
+        <span>LOUIS VUITTON</span> <span>TAG HEUER</span>
+        <span>MOËT HENNESSY</span> <span>AMERICAN EXPRESS</span>
+        <span>SANTANDER</span> <span>ALLWYN</span> <span>GLOBANT</span>
+        <span>LAS VEGAS</span> <span>PARAMOUNT+</span> <span>BARILLA</span>
+        <span>LIQUI MOLY</span> <span>NESTLÉ</span> <span>PWC</span>
+      </div>
+      <div class="partner-row light">
+        <span>PUMA</span> <span>TATA COMMUNICATIONS</span> <span>AGGREKO</span>
+        <span>BBS</span> <span>McDONALD’S</span> <span>Ganesh Ahmad</span>
+        <span>Farhaad Ahmad</span>
+      </div>
+    </section>
+
+    <footer>© 2025 Farhaad. All Rights Reserved.</footer>
+  </body>
+</html>
