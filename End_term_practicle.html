@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Cards</title>
+</head>
+<style>
+body{
+margin: 0;
+background-color: aqua;
+}
+
+h1{
+text-align: center;
+padding: 20px;
+}
+.container{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 40px;
+overflow: hidden;
+}
+
+.card{
+background: white;
+width: 400px;
+border-radius: 10px;
+text-align: center;
+padding: 15px;
+ 
+ }
+.card img {
+ widht: 100px;
+ border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+.card { width: 45%}
+ }
+
+@media (max-width: 480px) {
+.card {width: 20%;
+}
+}
+
+
+</style>
+<body>
+
+<h1>Flex-Structure</h1>
+
+<div class="container">
+
+    <div class="card">
+    <img src="" alt="Product 1">
+    <h3>Product 1</h3>
+    <p>Good quality product.</p>
+    <p class="price">$999</p>
+    <button>Buy Now</button>
+    </div>
+
+    <div class="card">
+    <img src="" alt="Product 2">
+    <h3>Product 2</h3>
+    <p>Best selling item.</p>
+    <p class="price">$1499</p>
+    <button>Buy Now</button>
+    </div>
+
+    <div class="card">
+    <img src="https://via.placeholder.com/250" alt="Product 3">
+    <h3>Product 3</h3>
+    <p>Limited stock available.</p>
+    <p class="price">$799</p>
+    <button>Buy Now</button>
+    </div>
+
+    <div class="card">
+    <img src="https://via.placeholder.com/250" alt="Product 4">
+    <h3>Product 4</h3>
+    <p>Premium quality product.</p>
+    <p class="price">$2299</p>
+    <button>Buy Now</button>
+    </div>
+    <div class="card">
+    <img src="https://via.placeholder.com/250" alt="Product 5">
+    <h3>Product 5</h3>
+    <p>Premium quality product.</p>
+    <p class="price">$1599</p>
+    <button>Buy Now</button>
+    </div>
+    <div class="card">
+    <img src="https://via.placeholder.com/250" alt="Product 6">
+    <h3>Product 6</h3>
+    <p>Premium quality product.</p>
+    <p class="price">$1199</p>
+    <button>Buy Now</button>
+    </div>
+
+
+</div>
+
+</body>
+</html>
